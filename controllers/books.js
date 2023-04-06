@@ -6,7 +6,19 @@ const Books = require("../models/Books");
 // @route    GET/api/v1/books
 // @access   public
 exports.getBooks = asyncHandler(async (req, res, next) => {
-  const books = await Books.find();
+  let query;
+
+  // Created query string
+  let queryStr = JSON.stringify(req.query)
+  // Create operator like (gte,gte,lt..) etc
+  queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g,match => `$${match}`);
+
+
+  // Finding resource
+  query = Books.find(JSON.parse(queryStr))
+
+  // Executing query
+  const books = await query
   res.status(200).json({
     success: true,
     count: books.length,

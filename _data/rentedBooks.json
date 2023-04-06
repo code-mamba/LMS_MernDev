@@ -1,0 +1,32 @@
+[{
+	"title": "PHP Oracle Web Development: Data processing, Security, Caching, XML, Web Services, and Ajax: A practical guide to combining the power, performance, scalability, ... time, and high performance of PHP",
+	"bookId":"642cf9c2cc8ffe263a98cda1",
+	"rentDays":10,
+	"rentedDate":"2023-01-18T07:14:43.731Z",
+	"returnDate":"2023-01-28T07:14:43.731Z",
+	"rentExpired":false,
+	"userName": "Dhanush",
+	"borrowedQuantity": 5
+
+},
+{
+	  "title": "Flask Web Development: Developing Web Applications with Python",
+      "bookId": "642cf9c2cc8ffe263a98cda2",
+      "rentDays": 2,
+      "rentDate": "2023-02-09T09:38:04.631Z",
+      "returnDate": "2023-02-11T09:38:04.631Z",
+      "rentExpired": false,
+      "userName": "merlins",
+      "borrowedQuantity": 1
+},
+{
+	"title": "Flask Web Development: Developing Web Applications with Python",
+	"bookId": "642cf9c2cc8ffe263a98cda2",
+	"rentDays": 1,
+	"rentDate": "2023-02-09T09:56:55.227Z",
+	"returnDate": "2023-02-10T09:56:55.227Z",
+	"rentExpired": false,
+	"userName": "TKR",
+	"borrowedQuantity": "1"
+  }
+]

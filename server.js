@@ -12,7 +12,8 @@ dotenv.config({path:'./config/config.env'})
 connectDB();
 // Route files
 const books = require('./routes/books')
-
+const rentedBooks = require('./routes/rentedBooks')
+const auth = require('./routes/auth')
 const app = express()
 
 app.use(express.json())
@@ -21,6 +22,8 @@ app.use(logger)
 // Mount Routers
 
 app.use('/api/v1/books',books)
+app.use('/api/v1/rentedBooks',rentedBooks)
+app.use('/api/v1/auth',auth)
 app.use(errorHandler)
 const PORT = process.env.PORT || 7000
 

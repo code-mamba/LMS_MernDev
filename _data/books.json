@@ -1,10 +1,11 @@
 [
 	{
+	"_id": "642cf9c2cc8ffe263a98cda1",
 	"title": "PHP Oracle Web Development: Data processing, Security, Caching, XML, Web Services, and Ajax: A practical guide to combining the power, performance, scalability, ... time, and high performance of PHP",
 	"author": "Yuli Vasiliev",
 	"categories": "technologies",
 	"volume":1,
-	"year": "2007",
+	"year": 2007,
 	"edition": "HardCover",
 	"language": "english",
 	"pages": "374",
@@ -12,18 +13,20 @@
 	"quantity":15,
 	"available": true
 },
-{
+{	"_id": "642cf9c2cc8ffe263a98cda2",
 	"title": "Flask Web Development: Developing Web Applications with Python",
       "author": "Miguel Grinberg",
       "categories": "Computer",
 	  "volume": 1,
-      "year": "2014",
+      "year": 2014,
       "edition": "Paperback",
       "language": "english",
       "pages": "258",
       "description": "Flask Web Development: Developing Web Applications with Python, open source web framework that enables you to create full-featured, sophisticated web-based applications, but with a twist... A full Rails application probably has less total code than the XML you'd need to configure the same application in other frameworks. With this book you'll learn how to use 'ActiveRecord' to connect business objects and database tables. No more painful object-relational mapping. Just create your business objects and let Rails do the rest. You'll learn how to use the 'Action Pack' framework to route incoming requests and render pages using easy-to-write templates and components. See how to exploit the Rails service frameworks to send emails, implement web services, and create dynamic, user-centric web-pages using built-in Javascript and Ajax support. There are extensive chapters on testing, deployment, and scaling. You'll see how easy it is to install Rails using your web server of choice (such as Apache or lighttpd) or using its own included web server. You'll be writing applications that work with your favorite database (MySQL, Oracle, Postgres, and more) in no time at all. You'll create a complete online store application in the extended tutorial section, so you'll see how a full Rails application is developed---iteratively and rapidly. Rails strives to honor the Pragmatic Programmer's 'DRY Principle' by avoiding the extra work of configuration files and code annotations. You can develop in real-time: make a change, and watch it work immediately. Forget XML. Everything in Rails, from templates to control flow to business logic, is written in Ruby, the language of choice for programmers who like to get the job done well (and leave work ontime for a change). Rails is the framework of choice for the new generation of Web 2.0 developers. Agile Web Development with Rails is the book for that generation, written by Dave Thomas (Pragmatic Programmer and author of Programming Ruby) and David Heinemeier Hansson, who created Rails.",
-	  "quantity":15
+	  "quantity":15,
+	  "available":true
 	  },{
+		"_id": "642cf9c2cc8ffe263a98cda3",
 	"title": "Developing Large Web Applications: Producing Code That Can Grow and Thrive",
       "author": "Kyle Loudon",
       "categories": "technologies",
@@ -33,28 +36,47 @@
       "language": "english",
       "pages": "302",
       "description": "The book essentially covers how to code up a large application without a framework. In reality if you are working with a large application (or not) you should use an existing framework to manage PHP, HTML templates, and JavaScript. For example CodeIgniter, (I haven't found a PHP HTML templating system I like yet), and Dojo. \r\rtl;dr - has some stuff you should know, but better to let a framework(s) do it for you.",
-      "quantity": 15
+      "quantity": 15,
+	  "available":true
 },{
+	"_id": "642cf9c2cc8ffe263a98cda4",
 	"title": "Something I Never Told You",
 	"author": "Shravya Bhinder",
 	"categories": "Romance",
 	"volume": "2",
-	"year": "2019",
+	"year": 2019,
 	"edition": "paperback",
 	"language": "English",
 	"pages": "259",
 	"description": "When in love, you tend to take each other for granted, and sometimes, that can cost you a lifetime of togetherness . . .Ronnie knew that his first crush was way out of his league, and yet he pursued and wooed Adira. Shyly and from a distance in the beginning, and more persuasively later. He couldn't believe it when the beautiful Adira actually began to reciprocate, falling in love with him for his simplicity and honesty. Slowly, as they get close and comfortable with each other, life takes on another hue. From truly magical it becomes routine. There are fights and then making-up sessions-a clash of egos and doubts.Things begin to change for the worst.It is too late.Ronnie and Adira will probably never find their forever after . . ",
-	"quantity": 12
+	"quantity": 12,
+	"available":true
 },{
+	"_id": "642cf9c2cc8ffe263a98cda5",
 	"title": "Secret",
       "author": "Rhonda Byrne",
       "categories": "self-help",
       "volume": "1",
-      "year": "2006",
+      "year": 2006,
       "edition": "HardCover",
       "language": "English",
       "pages": "446",
       "description": "Rhonda Byrne is the creator behind The Secret, a documentary film that swept the world in 2006, changing millions of lives and igniting a global movement. Later that same year, Rhonda's book of The Secret was released. It has been translated into more than fifty languages.",
-      "quantity": "10"
+      "quantity": "10",
+	  "available":true
+	  
+},
+{	"_id": "642cf9c2cc8ffe263a98cda6",
+	"title": "Treasure Island",
+      "author": " Robert Louis Stevenson,",
+      "categories": "adventure",
+      "volume": "1",
+      "year": 1959,
+      "edition": "HardCover",
+      "language": "french",
+      "pages": "400",
+      "description": "Treasure Island (originally titled The Sea Cook: A Story for Boys[1]) is an adventure novel by Scottish author Robert Louis Stevenson, telling a story of \"buccaneers and buried gold\". It is considered a coming-of-age story and is noted for its atmosphere, characters, and action.\n\nThe novel was originally serialised from 1881 to 1882 in the children's magazine Young Folks, under the title Treasure Island or the Mutiny of the Hispaniola, credited to the pseudonym \"Captain George North\". It was first published as a book on 14 November 1883 by Cassell & Co. It has since become one of the most often dramatized and adapted of all novels, in numerous media.",
+      "quantity": 12,
+      "isAvailable": true
 }
 ]
