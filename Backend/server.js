@@ -3,6 +3,7 @@ const dotenv = require('dotenv')
 const logger = require('./middleware/logger')
 const connectDB = require('./config/db')
 const colors = require('colors')
+const cookieParser = require('cookie-parser')
 const errorHandler  =require('./middleware/error')
 
 
@@ -16,8 +17,16 @@ const rentedBooks = require('./routes/rentedBooks')
 const auth = require('./routes/auth')
 const app = express()
 
+const cors = require("cors")
+var corsOptions = {
+	origin: "http://localhost:3000"
+}
+app.use(cors(corsOptions))
+
 app.use(express.json())
 app.use(logger)
+// Cookie parser
+app.use(cookieParser())
 
 // Mount Routers
 
