@@ -3,8 +3,10 @@ const dotenv = require('dotenv')
 const logger = require('./middleware/logger')
 const connectDB = require('./config/db')
 const colors = require('colors')
+const fileupload = require('express-fileupload')
 const cookieParser = require('cookie-parser')
 const errorHandler  =require('./middleware/error')
+const path = require('path')
 
 
 // Load env vars
@@ -28,6 +30,11 @@ app.use(logger)
 // Cookie parser
 app.use(cookieParser())
 
+// File Uploading
+app.use(fileupload())
+
+// Set static folder
+app.use(express.static(path.join(__dirname,'public')))
 // Mount Routers
 
 app.use('/api/v1/books',books)

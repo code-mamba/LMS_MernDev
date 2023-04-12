@@ -34,7 +34,7 @@ exports.register = asyncHandler(async (req, res, next) => {
 exports.login = asyncHandler(async (req, res, next) => {
   console.log("inside login");
   const { userEmail, userPassword } = req.body;
-
+  console.log(req.body);
   // Validate email & password
   if (!userEmail || !userPassword) {
     return next(
