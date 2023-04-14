@@ -17,3 +17,10 @@ exports.getRentedBooks = asyncHandler( async(req,res,next)=>{
 	const rentedBooks = await query
 	res.status(200).json({success:true,count: rentedBooks.length,data:rentedBooks})
 } )
+exports.postRentedBooks = asyncHandler( async(req,res,next)=>{
+	const rentedbook = await RentedBooks.create(req.body);
+ 	 res.status(201).json({
+    success: true,
+    data: rentedbook,
+  });
+})

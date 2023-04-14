@@ -21,10 +21,12 @@ const app = express()
 
 const cors = require("cors")
 var corsOptions = {
-	origin: "http://localhost:3000"
+	// origin: "http://localhost:3000",
+	credentials:true,
+	origin:true
 }
 app.use(cors(corsOptions))
-
+app.options("*",cors(corsOptions))
 app.use(express.json())
 app.use(logger)
 // Cookie parser
@@ -46,7 +48,7 @@ const PORT = process.env.PORT || 7000
 const server = app.listen(PORT, ()=>{
 	console.log(`server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold);
 })
-// Handle unhabdled rejection
+// Handle unhandled rejection
 process.on('unhandledRejection',(err,promise)=>{
 	console.log(`Error: ${err.message}`);
 	// close server and exit process
