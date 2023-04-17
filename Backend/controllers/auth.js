@@ -83,3 +83,30 @@ exports.getMe = asyncHandler(async (req, res, next) => {
     data: user,
   });
 });
+// @desc   Log user out/ clear cookie
+// @route  POST/api/v1/auth/logout
+// @access Private
+exports.logout = asyncHandler(async (req, res, next) => {
+  res.cookie("token", "none", {
+    expires: new Date(Date.now()+10*1000),
+    httpOnly: true,
+  });
+  res.status(200).json({
+    success: true,
+    data: {},
+  });
+});
+
+exports.getUsers = asyncHandler(async (req, res, next) => {
+  // console.log(req.query)
+  let query;
+  if (req.query) {
+    console.log(req.query);
+    query = User.find(req.query);
+    console.log(query);
+  } else {
+    query = User.find();
+  }
+  const users = await query;
+  res.status(200).json({ success: true, count: users.length, data: users });
+});

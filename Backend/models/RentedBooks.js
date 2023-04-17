@@ -3,7 +3,7 @@ const RentedBooksSchema = new mongoose.Schema({
 	title:{
 		type: String,
 		trim: true,
-		requied:[true, 'Please add a book title']
+		required:[true, 'Please add a book title']
 	},
 	bookId:{
 		type: mongoose.Schema.ObjectId,
@@ -21,6 +21,10 @@ const RentedBooksSchema = new mongoose.Schema({
 	returnDate:{
 		type: Date,
 		required:[true, 'Please add a return date']
+	},
+	userId:{
+		type: String,
+		required:[true, 'Please add user id']
 	},
 	rentExpired:{
 		type:Boolean,
