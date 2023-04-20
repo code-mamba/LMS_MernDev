@@ -20,7 +20,6 @@ else if(req.cookies.token){
 	try {
 		// Verify token
 		const decoded = jwt.verify(token,process.env.JWT_SECRET)
-		console.log("token decoded",decoded);
 		const userId = decoded.id
 		req.user = await User.findById(userId)
 		next()

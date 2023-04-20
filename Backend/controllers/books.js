@@ -2,14 +2,12 @@ const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/async");
 const Books = require("../models/Books");
 const path = require("path");
-const { Error } = require("mongoose");
 
 // @desc     Get all Books
 // @route    GET/api/v1/books
 // @access   public
 exports.getBooks = asyncHandler(async (req, res, next) => {
   let query;
-
   // Created query string
   let queryStr = JSON.stringify(req.query);
   // Create operator like (gte,gte,lt..) etc
@@ -19,7 +17,7 @@ exports.getBooks = asyncHandler(async (req, res, next) => {
   );
 
   // Finding resource
-  query = Books.find(JSON.parse(queryStr));
+  query = Books.find(JSON.parse(queryStr)).sort({ title: 1 });
 
   // Executing query
   const books = await query;
@@ -58,7 +56,7 @@ exports.createBook = asyncHandler(async (req, res, next) => {
 // @route    PUT/api/v1/books/:id
 // @access   private
 exports.updateBook = asyncHandler(async (req, res, next) => {
-  console.log("reqParms",req.params.id)
+  console.log("reqParms", req.params.id);
   const book = await Books.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
@@ -89,4 +87,3 @@ exports.deleteBook = asyncHandler(async (req, res, next) => {
     data: {},
   });
 });
-

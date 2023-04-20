@@ -7,12 +7,10 @@ const RentedBooks = require("../models/RentedBooks");
 // @access Public
 
 exports.getRentedBooks = asyncHandler(async (req, res, next) => {
-  // console.log(req.query)
   let query;
   if (req.query) {
     console.log(req.query);
     query = RentedBooks.find(req.query);
-    console.log(query);
   } else {
     query = RentedBooks.find();
   }

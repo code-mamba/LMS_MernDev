@@ -32,9 +32,7 @@ exports.register = asyncHandler(async (req, res, next) => {
 // @route     POST/api/v1/auth/login
 // @access    public
 exports.login = asyncHandler(async (req, res, next) => {
-  console.log("inside login");
   const { userEmail, userPassword } = req.body;
-  console.log(req.body);
   // Validate email & password
   if (!userEmail || !userPassword) {
     return next(
@@ -54,7 +52,7 @@ exports.login = asyncHandler(async (req, res, next) => {
   }
   sendTokenResponse(user, 200, res);
 });
-// Get Token from model, create and send response
+// Get Token from model, and send response
 const sendTokenResponse = (user, statusCode, res) => {
   const token = user.getSignedJwtToken();
 
@@ -87,10 +85,9 @@ exports.getMe = asyncHandler(async (req, res, next) => {
 // @route  POST/api/v1/auth/logout
 // @access Private
 exports.logout = asyncHandler(async (req, res, next) => {
-  res.cookie("token", "none", {
-    expires: new Date(Date.now()+10*1000),
-    httpOnly: true,
-  });
+  res.clearCookie("token",{
+    httpOnly:true
+  })
   res.status(200).json({
     success: true,
     data: {},
