@@ -20,6 +20,7 @@ const books = require('./routes/books')
 const rentedBooks = require('./routes/rentedBooks')
 const auth = require('./routes/users')
 const logger = bunyan.createLogger({name: 'myapp'})
+const errorLogger = bunyan.createLogger({name:'error'})
 const app = express()
 
 const cors = require("cors")
@@ -52,8 +53,9 @@ app.use('/api/v1/books',books)
 app.use('/api/v1/rentedBooks',rentedBooks)
 app.use('/api/v1/auth',auth)
 app.use(errorHandler)
-app.use((req,res,next)=>{
-	logger.child({req:req},'Incoming request')
+app.use((err, req,res,next)=>{
+	errorLogger.error({err:err},'Error occured')
+	next(err)
 })
 
 const PORT = process.env.PORT || 7000

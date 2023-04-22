@@ -26,6 +26,7 @@ exports.postRentedBooks = asyncHandler(async (req, res, next) => {
   res.status(201).json({
     success: true,
     data: rentedbook,
+    message: "rented successfully"
   });
 });
 exports.getSingleUserBook = asyncHandler(async (req, res, next) => {

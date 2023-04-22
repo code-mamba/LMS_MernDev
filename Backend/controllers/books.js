@@ -50,13 +50,14 @@ exports.createBook = asyncHandler(async (req, res, next) => {
   res.status(201).json({
     success: true,
     data: book,
+    message: "book added successfully",
   });
 });
 // @desc     Update Book
 // @route    PUT/api/v1/books/:id
 // @access   private
 exports.updateBook = asyncHandler(async (req, res, next) => {
-  console.log("reqParms", req.params.id);
+  console.log("reqParms", req.params.id, req.body);
   const book = await Books.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
@@ -85,5 +86,6 @@ exports.deleteBook = asyncHandler(async (req, res, next) => {
   res.status(200).json({
     success: true,
     data: {},
+    message: "Book Deleted Successfully",
   });
 });
