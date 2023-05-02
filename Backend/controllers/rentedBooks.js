@@ -1,6 +1,8 @@
 const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/async");
-const RentedBooks = require("../models/RentedBooks");
+// const RentedBooks = require("../models/RentedBooks");
+const { RentedBooks } = require("../config/db");
+const { ObjectId } = require("bson");
 
 // @desc   Get RentedBooks
 // @Routes Get /api/v1/RentedBooks
@@ -9,10 +11,9 @@ const RentedBooks = require("../models/RentedBooks");
 exports.getRentedBooks = asyncHandler(async (req, res, next) => {
   let query;
   if (req.query) {
-    console.log(req.query);
-    query = RentedBooks.find(req.query);
+    query = await RentedBooks.find(req.query).toArray();
   } else {
-    query = RentedBooks.find();
+    query = await RentedBooks.find().toArray();
   }
   const rentedBooks = await query;
   res
@@ -20,17 +21,14 @@ exports.getRentedBooks = asyncHandler(async (req, res, next) => {
     .json({ success: true, count: rentedBooks.length, data: rentedBooks });
 });
 exports.postRentedBooks = asyncHandler(async (req, res, next) => {
-	let Title = req.body.bookTitle
-  console.log("backend", typeof(Title));
-  const rentedbook = await RentedBooks.create(req.body);
+  const rentedbook = await RentedBooks.insertOne(req.body);
   res.status(201).json({
     success: true,
     data: rentedbook,
-    message: "rented successfully"
+    message: "rented successfully",
   });
 });
 exports.getSingleUserBook = asyncHandler(async (req, res, next) => {
-  console.log(req.query);
   const rentedbook = await RentedBooks.find(req.query);
   if (!rentedbook) {
     return next(
@@ -45,7 +43,8 @@ exports.getSingleUserBook = asyncHandler(async (req, res, next) => {
 
 //   Delete  RentedBook by id
 exports.deleteRentedBook = asyncHandler(async (req, res, next) => {
-  const rentedbook = await RentedBooks.findByIdAndDelete(req.params.id);
+  const o_id = new ObjectId(req.params.id);
+  const rentedbook = await RentedBooks.deleteOne({ _id: o_id });
   if (!rentedbook) {
     return next(
       new ErrorResponse(`Book Not found with id of ${req.params.id}`, 404)

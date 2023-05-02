@@ -1,26 +1,22 @@
 const ErrorResponse = require("../utils/errorResponse");
 const asyncHandler = require("../middleware/async");
-const Books = require("../models/Books");
+const { Books } = require("../config/db");
 const path = require("path");
+const ObjectID = require("bson").ObjectId;
 
 // @desc     Get all Books
 // @route    GET/api/v1/books
 // @access   public
 exports.getBooks = asyncHandler(async (req, res, next) => {
   let query;
-  // Created query string
   let queryStr = JSON.stringify(req.query);
-  // Create operator like (gte,gte,lt..) etc
+  console.log(queryStr)
   queryStr = queryStr.replace(
     /\b(gt|gte|lt|lte|in)\b/g,
     (match) => `$${match}`
   );
-
-  // Finding resource
-  query = Books.find(JSON.parse(queryStr)).sort({ title: 1 });
-
-  // Executing query
-  const books = await query;
+  query = JSON.parse(queryStr);
+  const books = await Books.find(query).sort({ title: 1 }).toArray();
   res.status(200).json({
     success: true,
     count: books.length,
@@ -31,7 +27,8 @@ exports.getBooks = asyncHandler(async (req, res, next) => {
 // @route    GET/api/v1/books/:id
 // @access   public
 exports.getBook = asyncHandler(async (req, res, next) => {
-  const book = await Books.findById(req.params.id);
+  const o_id = new ObjectID(req.params.id);
+  const book = await Books.findOne({ _id: o_id });
   if (!book) {
     return next(
       new ErrorResponse(`Book Not found with id of ${req.params.id}`, 404)
@@ -46,7 +43,7 @@ exports.getBook = asyncHandler(async (req, res, next) => {
 // @route    POST/api/v1/books
 // @access   private
 exports.createBook = asyncHandler(async (req, res, next) => {
-  const book = await Books.create(req.body);
+  const book = await Books.insertOne(req.body);
   res.status(201).json({
     success: true,
     data: book,
@@ -57,8 +54,10 @@ exports.createBook = asyncHandler(async (req, res, next) => {
 // @route    PUT/api/v1/books/:id
 // @access   private
 exports.updateBook = asyncHandler(async (req, res, next) => {
-  console.log("reqParms", req.params.id, req.body);
-  const book = await Books.findByIdAndUpdate(req.params.id, req.body, {
+  const filter = { _id: new ObjectID(req.params.id) };
+  const update = { $set: { ...req.body } };
+  delete update.$set._id
+  const book = await Books.findOneAndUpdate(filter, update, {
     new: true,
     runValidators: true,
   });
@@ -76,7 +75,8 @@ exports.updateBook = asyncHandler(async (req, res, next) => {
 // @route    DELETE/api/v1/books/:id
 // @access   private
 exports.deleteBook = asyncHandler(async (req, res, next) => {
-  const book = await Books.findByIdAndDelete(req.params.id);
+  const o_id = new ObjectID(req.params.id);
+  const book = await Books.findOneAndDelete({ _id: o_id });
   if (!book) {
     return next(
       new ErrorResponse(`Book Not found with id of ${req.params.id}`, 404)

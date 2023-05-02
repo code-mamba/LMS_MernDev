@@ -1,20 +1,20 @@
 const express = require('express')
 const dotenv = require('dotenv')
 // const logger = require('./middleware/logger')
-const connectDB = require('./config/db')
+// const connectDB = require('./config/db')
+const {connectToDatabase} = require('./config/db')
 const colors = require('colors')
 const fileupload = require('express-fileupload')
 const cookieParser = require('cookie-parser')
 const errorHandler  =require('./middleware/error')
 const path = require('path')
 const multer = require('multer')
-// const morgan = require('morgan')
 const bunyan = require('bunyan')
 
 // Load env vars
 dotenv.config({path:'./config/config.env'})
 // connect to database
-connectDB();
+connectToDatabase()
 // Route files
 const books = require('./routes/books')
 const rentedBooks = require('./routes/rentedBooks')
@@ -32,9 +32,6 @@ app.use(cors(corsOptions))
 app.options("*",cors(corsOptions))
 app.use(express.json())
 
-// Morgan
-
-// app.use(morgan('combined'))
 // Cookie parser
 app.use(cookieParser())
 
